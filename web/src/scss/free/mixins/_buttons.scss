@@ -1,0 +1,97 @@
+// Button variant
+@mixin button-variant-mdb($background) {
+  color: set-notification-text-color($background);
+  background-color: $background;
+
+  &:hover {
+    color: set-notification-text-color($background);
+    background-color: darken($background, 7.5%);
+  }
+
+  &:focus,
+  &.focus {
+    color: set-notification-text-color($background);
+    background-color: darken($background, 7.5%);
+  }
+
+  .btn-check:checked + &,
+  .btn-check:active + &,
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: set-notification-text-color($background);
+    background-color: darken($background, 20%);
+
+    &:focus {
+      box-shadow: $btn-focus-box-shadow;
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    color: set-notification-text-color($background);
+    background-color: $background;
+  }
+}
+
+// Button variant outline
+@mixin button-outline-variant-mdb($color) {
+  color: $color;
+  border-color: $color;
+
+  &:hover {
+    color: $color;
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &:active,
+  &.active,
+  &.dropdown-toggle.show {
+    color: $color;
+    background-color: transparent;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $color;
+  }
+}
+
+// Button sizes
+@mixin button-size-mdb(
+  $padding-top,
+  $padding-right,
+  $padding-bottom,
+  $padding-left,
+  $font-size,
+  $line-height
+) {
+  padding: $padding-top $padding-right $padding-bottom $padding-left;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+// Button size variant outline
+@mixin button-outline-size-mdb($padding-top, $padding-right, $padding-bottom, $padding-left) {
+  padding: $padding-top $padding-right $padding-bottom $padding-left;
+}
+
+$mynewcolor:#4A148C;
+
+.btn-primary {
+    @include button-variant($mynewcolor, darken($mynewcolor, 7.5%), darken($mynewcolor, 10%), lighten($mynewcolor,5%), lighten($mynewcolor, 10%), darken($mynewcolor,30%));
+}
+    
+.btn-outline-primary {
+    @include button-outline-variant($mynewcolor, #222222, lighten($mynewcolor,5%), $mynewcolor);
+}

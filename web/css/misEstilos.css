@@ -1,0 +1,21 @@
+h1, h2, h3, h4, h5, h6{
+  font-family: 'KoHo', sans-serif;  
+}
+body{
+  font-family: 'KoHo', sans-serif;
+}
+
+.btn-outline-primary {
+    color: #00BCD4 !important;
+    border-color: #00BCD4 !important;
+}
+
+.cyan{
+    color: #00BCD4 !important;
+    border-color: #00BCD4 !important;
+    background-color: #00BCD4 !important; 
+}
+
+nav{
+    border-color: #00BCD4; color:#00BCD4;
+}
