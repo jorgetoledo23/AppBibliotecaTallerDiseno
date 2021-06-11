@@ -8,6 +8,15 @@ public class Categoria implements Serializable{
     private int CategoriaId;
     private String Nombre;
     private String Descripcion;
+    private String Imagen;
+
+    public String getImagen() {
+        return Imagen;
+    }
+
+    public void setImagen(String Imagen) {
+        this.Imagen = Imagen;
+    }
 
     public Categoria() {
     }

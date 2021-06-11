@@ -18,58 +18,35 @@
         
         <div class="container">
             <div class="row">
-                <h1 class="mb-3">Ingreso de Categorias</h1>
+                <h1 class="mb-3">Editar Categoria</h1>
                 <hr>
                 <div class="col-lg-4">
                     
                     <form action="ControllerCategoria" method="POST" enctype="multipart/form-data">
                         <div class="form-outline mb-4">
-                            <input name="categoriaName" type="text" class="form-control" />
+                            <input readonly="true"
+                                name="categoriaId" type="text" value="${requestScope.Categoria.categoriaId}" class="form-control" />
+                            <label class="form-label" for="categoriaId">CategoriaId</label>
+                        </div>
+                        <div class="form-outline mb-4">
+                            <input name="categoriaName" type="text" class="form-control" value="${requestScope.Categoria.nombre}" />
                             <label class="form-label" for="categoriaName">Nombre de la Categoria</label>
                         </div>
                         <div class="form-outline mb-4">
-                            <input name="categoriaDescripcion" type="text" class="form-control" />
+                            <input name="categoriaDescripcion" type="text" class="form-control" value="${requestScope.Categoria.descripcion}" />
                             <label class="form-label" for="categoriaDescripcion">Descripcion de la Categoria</label>
                         </div>
                         <div class="mb-3">
                             <label for="CategoriaImagen" class="form-label">Imagen</label>
                             <input name="CategoriaImagen" class="form-control" type="file" id="CategoriaImagen">
                         </div>
-                        <input class="btn btn-outline-success btn-block" name="Accion" type="submit" value="Guardar Categoria">
+                        <input class="btn btn-outline-primary btn-block" name="Accion" type="submit" value="Guardar Cambios">
                     </form>
                 </div>
             </div>
-            <div class="row col-md-12 justify-content-between float-left mt-5">
-
-                <c:forEach var="Categoria" items="${applicationScope.ListadoCategorias}">
-
-                    <div class="card col-md-3 mr-3 ml-3 mb-3 mx-auto" >
-                        <img src="img/${Categoria.imagen}" class="card-img-top mx-auto" alt="..." style="width: 133px; height: 200px;">
-                        <div class="card-body text-center">
-                            <h5 class="card-title"><strong>${Categoria.nombre}</strong></h5>
-                            <p class="card-text">${Categoria.descripcion}</p>
-                        </div>
-                        <div class="row justify-content-center mb-3">
-                            <div class="col-1 float-left">
-                                <a href="ControllerCategoria?opcion=edit&catId=${Categoria.categoriaId}" class="mr-3"><i class="fas fa-edit"></i></a>
-                            </div>
-                            <div class="col-1 float-left">
-                                <a class="mr-3"><i class="fas fa-info-circle"></i></a>
-                            </div>
-                            <div class="col-1 float-left">
-                                <a onclick="return confirm('Estas seguro de eliminar esta Categoria?')" class="mr-3"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                
-                </c:forEach>
-
-                
-                
-            </div>
             
         </div>
-    <!-- HOLA GITHUB -->
+
     <script type="text/javascript" src="js/mdb.min.js"></script>
     </body>
 </html>
