@@ -17,9 +17,14 @@
         <jsp:include page="includes/menu.jsp"></jsp:include>
         
         <div class="container">
+            
+            <div class="card card-cascade narrower view view-cascade gradient-card-header blue-gradient py-2 mb-3 d-flex justify-content-between align-items-center">
+                <h2 class="card-title mx-5">Administracion de Categorias</h2>
+                <a class="text-success mx-5" href="#"><i class="fas fa-sign-out-alt fa-lg mr-2"></i>Salir</a>
+            </div>
+            <hr>
             <div class="row">
-                <h1 class="mb-3">Ingreso de Categorias</h1>
-                <hr>
+
                 <div class="col-lg-4">
                     
                     <form action="ControllerCategoria" method="POST" enctype="multipart/form-data">
@@ -44,7 +49,7 @@
                 <c:forEach var="Categoria" items="${applicationScope.ListadoCategorias}">
 
                     <div class="card col-md-3 mr-3 ml-3 mb-3 mx-auto" >
-                        <img src="img/${Categoria.imagen}" class="card-img-top mx-auto" alt="..." style="width: 133px; height: 200px;">
+                        <img src="img/${Categoria.imagen}" class="card-img-top mx-auto" alt="...">
                         <div class="card-body text-center">
                             <h5 class="card-title"><strong>${Categoria.nombre}</strong></h5>
                             <p class="card-text">${Categoria.descripcion}</p>
@@ -57,7 +62,8 @@
                                 <a class="mr-3"><i class="fas fa-info-circle"></i></a>
                             </div>
                             <div class="col-1 float-left">
-                                <a onclick="return confirm('Estas seguro de eliminar esta Categoria?')" class="mr-3"><i class="fas fa-trash"></i></a>
+                                <a href="ControllerCategoria?opcion=delete&catId=${Categoria.categoriaId}"
+                                    onclick="return confirm('Estas seguro de eliminar esta Categoria?')" class="mr-3"><i class="fas fa-trash"></i></a>
                             </div>
                         </div>
                     </div>

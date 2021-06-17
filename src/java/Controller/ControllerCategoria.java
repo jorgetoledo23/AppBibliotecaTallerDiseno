@@ -39,13 +39,17 @@ public class ControllerCategoria extends HttpServlet {
             response.sendRedirect("CategoriaIndex.jsp");
         }
         if(request.getParameter("opcion") != null){
+            int CatId = Integer.parseInt(request.getParameter("catId"));
+            Categoria C = D.obtenerCategoriaPorId(CatId);
             switch (request.getParameter("opcion")) {
                 case "edit":
                     //Aqui Editamos la Categoria
-                    int CatId = Integer.parseInt(request.getParameter("catId"));
-                    Categoria C = D.obtenerCategoriaPorId(CatId);
                     request.setAttribute("Categoria", C);
                     request.getRequestDispatcher("CategoriaEdit.jsp").forward(request, response);
+                    break;
+                case "delete":
+                    D.eliminarCategoria(C);
+                    response.sendRedirect("ControllerCategoria");
                     break;
             }
         }
@@ -67,9 +71,13 @@ public class ControllerCategoria extends HttpServlet {
         Categoria C = new Categoria();
         C.setNombre(request.getParameter("categoriaName"));
         C.setDescripcion(request.getParameter("categoriaDescripcion"));
-        C.setImagen(getImagen(request.getPart("CategoriaImagen"), request));
+        Part x = request.getPart("CategoriaImagen");
+        if (x.getSubmittedFileName()!= "") {
+            C.setImagen(getImagen(request.getPart("CategoriaImagen"), request));
+        }else{
+            C.setImagen("no-disponible.png");
+        }
         DAO D = new DAO();
-        
         switch (request.getParameter("Accion")) {
             case "Guardar Categoria":
                 {
@@ -121,7 +129,7 @@ public class ControllerCategoria extends HttpServlet {
         InputStream filecontent = null;
         //Configuracion del nombre del archivo
         String format = "";
-        DateFormat hourdateFormat = new SimpleDateFormat("HHmmssddMMyyyy");//img/18583010062021.jgp
+        DateFormat hourdateFormat = new SimpleDateFormat("HHmmssddMMyyyy");//img/x12073017062021.jgp
         String fecha = hourdateFormat.format(new Date());
         //Se Valida la extencion
         if (Imagen.getSubmittedFileName().endsWith(".png")) {

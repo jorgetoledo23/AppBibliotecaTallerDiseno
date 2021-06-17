@@ -25,6 +25,15 @@ public class DAO {
         filasAfectadas = Sentencia.executeUpdate("INSERT INTO tblCategorias (Nombre, Descripcion, Imagen) VALUES ('"+C.getNombre()+"', '"+C.getDescripcion()+"', '"+C.getImagen()+"')");
         return filasAfectadas;
     }
+    
+    
+    public int eliminarCategoria(Categoria C) throws SQLException{
+        int filasAfectadas = 0;
+        Sentencia = Con.createStatement();
+        filasAfectadas = Sentencia.executeUpdate("DELETE FROM tblCategorias WHERE CategoriaId = "+C.getCategoriaId()+"");
+        return filasAfectadas;
+    }
+    
     public int actualizarCategoria(Categoria C) throws SQLException{
         int filasAfectadas = 0;
         Sentencia = Con.createStatement();

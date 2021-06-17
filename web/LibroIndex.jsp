@@ -17,12 +17,16 @@
         <jsp:include page="includes/menu.jsp"></jsp:include>
         
         <div class="container">
+            
+            <div class="card card-cascade narrower view view-cascade gradient-card-header blue-gradient py-2 mb-3 d-flex justify-content-between align-items-center">
+                <h2 class="card-title mx-5">Administracion de Libros</h2>
+                <a class="text-success mx-5" href="#"><i class="fas fa-sign-out-alt fa-lg mr-2"></i>Salir</a>
+            </div>
+            <hr>
+            
             <div class="row">
-                <h1 class="mb-3">Ingreso de Libros</h1>
-                <hr>
-                <div class="col-lg-4">
-                    
-                    <form action="ControllerLibro" method="POST">
+                <form class="row" action="ControllerLibro" method="POST">
+                <div class="col-lg-6">
                         <div class="form-outline mb-4">
                             <input name="libroName" type="text" class="form-control" />
                             <label class="form-label" for="libroName">Nombre del Libro</label>
@@ -32,10 +36,51 @@
                             <input name="libroISBN" type="text" class="form-control" />
                             <label class="form-label" for="libroISBN">ISBN</label>
                         </div>
-                        <p class="text-warning">${msgError}</p>
-                        <input class="btn btn-outline-success btn-block" name="Accion" type="submit" value="Guardar Libro">
-                    </form>
+                            <div class="form-outline mb-4">
+                            <input name="libroISBN" type="text" class="form-control" />
+                            <label class="form-label" for="libroISBN">ISBN</label>
+                        </div>
+                            <div class="form-outline mb-4">
+                            <input name="libroISBN" type="text" class="form-control" />
+                            <label class="form-label" for="libroISBN">ISBN</label>
+                        </div>
+                            <div class="form-outline mb-4">
+                            <input name="libroISBN" type="text" class="form-control" />
+                            <label class="form-label" for="libroISBN">ISBN</label>
+                        </div>
+                    
                 </div>
+                        <div class="col-lg-6">
+                    
+
+                        <div class="form-outline mb-4">
+                            <input name="libroName" type="text" class="form-control" />
+                            <label class="form-label" for="libroName">Nombre del Libro</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input name="libroISBN" type="text" class="form-control" />
+                            <label class="form-label" for="libroISBN">ISBN</label>
+                        </div>
+                            <div class="form-outline mb-4">
+                            <input name="libroISBN" type="text" class="form-control" />
+                            <label class="form-label" for="libroISBN">ISBN</label>
+                        </div>
+                            <div class="form-outline mb-4">
+                            <input name="libroISBN" type="text" class="form-control" />
+                            <label class="form-label" for="libroISBN">ISBN</label>
+                        </div>
+                            <div class="form-outline mb-4">
+                            <input name="libroISBN" type="text" class="form-control" />
+                            <label class="form-label" for="libroISBN">ISBN</label>
+                        </div>
+                        
+                        
+
+                </div>
+                    <p class="text-warning">${msgError}</p>
+                        <input class="btn btn-outline-success btn-block" name="Accion" type="submit" value="Guardar Libro">
+                        </form>
             </div>
             <div class="row mt-5">
                 <table class="table table-hover text-center">

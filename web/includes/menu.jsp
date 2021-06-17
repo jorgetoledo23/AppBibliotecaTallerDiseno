@@ -30,7 +30,7 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="index.jsp">Libros</a>
+          <a class="nav-link text-success" href="ControllerLibro">Libros</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-warning" href="ControllerCategoria">Categorias</a>
