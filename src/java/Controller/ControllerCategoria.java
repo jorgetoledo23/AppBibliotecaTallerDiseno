@@ -27,6 +27,10 @@ import javax.servlet.http.Part;
 @MultipartConfig
 @WebServlet(name = "ControllerCategoria", urlPatterns = {"/ControllerCategoria"})
 public class ControllerCategoria extends HttpServlet {
+    
+    
+
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -81,17 +85,17 @@ public class ControllerCategoria extends HttpServlet {
         switch (request.getParameter("Accion")) {
             case "Guardar Categoria":
                 {
-                    try {
-                        //Guardar Nueva Categoria
-                        if (D.insertarCategoria(C) == 1){
-                            response.sendRedirect("ControllerCategoria");
-                        }else{
-                            request.setAttribute("msgError", "Error al Insertar! Intente de nuevo");
-                            request.getRequestDispatcher("CategoriaIndex.jsp").forward(request, response);
-                        }
-                    } catch (SQLException ex) {
-                        System.out.println(ex.getMessage());
+                try {
+                    //Guardar Nueva Categoria
+                    if (D.insertarCategoria(C) == 1){
+                        response.sendRedirect("ControllerCategoria");
+                    }else{
+                        request.setAttribute("msgError", "Error al Insertar! Intente de nuevo");
+                        request.getRequestDispatcher("CategoriaIndex.jsp").forward(request, response);
                     }
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
                 }
             break;
             case "Guardar Cambios":
@@ -132,11 +136,12 @@ public class ControllerCategoria extends HttpServlet {
         DateFormat hourdateFormat = new SimpleDateFormat("HHmmssddMMyyyy");//img/x12073017062021.jgp
         String fecha = hourdateFormat.format(new Date());
         //Se Valida la extencion
-        if (Imagen.getSubmittedFileName().endsWith(".png")) {
+        String nombreArchivo = Imagen.getSubmittedFileName();
+        if (nombreArchivo.endsWith(".png") || nombreArchivo.endsWith(".PNG")) {
             format = ".png";
-        } else if (Imagen.getSubmittedFileName().endsWith(".jpg")) {
+        } else if (nombreArchivo.endsWith(".jpg") || nombreArchivo.endsWith(".JPG")) {
             format = ".jpg";
-        } else if (Imagen.getSubmittedFileName().endsWith(".jpeg")) {
+        } else if (nombreArchivo.endsWith(".jpeg") || nombreArchivo.endsWith(".JPEG")) {
             format = ".jpeg";
         }
         String file_photo = foto + "_" + fecha + format;

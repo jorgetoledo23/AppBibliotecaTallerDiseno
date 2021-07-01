@@ -44,9 +44,13 @@
                             <input name="libroISBN" type="text" class="form-control" />
                             <label class="form-label" for="libroISBN">ISBN</label>
                         </div>
-                            <div class="form-outline mb-4">
-                            <input name="libroISBN" type="text" class="form-control" />
-                            <label class="form-label" for="libroISBN">ISBN</label>
+                        <div class="form-group">
+                            <label for="Categoria" class="control-label">Categoria</label>
+                            <select name="Categoria" class="form-control">
+                                <c:forEach var="C" items="${applicationScope.ListadoCategorias}">
+                                    <option value="${C.categoriaId}">${C.nombre}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                     
                 </div>
