@@ -1,7 +1,7 @@
 package Controller;
 
 import DataBaseConector.DAO;
-import Models.Categoria;
+import Models.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -36,14 +36,12 @@ public class ControllerCategoria extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            
-            
-        DAO D = new DAO();
-        if(request.getParameter("opcion") == null){
-            //Cargar Todas las Categorias
-            getServletContext().setAttribute("ListadoCategorias", D.obtenerCategorias());
-            response.sendRedirect("CategoriaIndex.jsp");
-        }
+            DAO D = new DAO();
+            if(request.getParameter("opcion") == null){
+                //Cargar Todas las Categorias
+                getServletContext().setAttribute("ListadoCategorias", D.obtenerCategorias());
+                response.sendRedirect("CategoriaIndex.jsp");
+            }
         if(request.getParameter("opcion") != null){
             int CatId = Integer.parseInt(request.getParameter("catId"));
             Categoria C = D.obtenerCategoriaPorId(CatId);
