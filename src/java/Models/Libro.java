@@ -6,7 +6,7 @@ public class Libro {
     private String Titulo;
     private String ISBN;
     private String Imagen;
-    private String Autor;
+    private String AutorId;
     private String Descripcion;
     private int Precio;
     private int Stock;
@@ -14,7 +14,9 @@ public class Libro {
     private int PrecioOferta;
     private int CategoriaId;
     private Categoria Categoria;
-
+    private Autor Autor;
+    private Idioma Idioma;
+    
     public String getImagen() {
         return Imagen;
     }
@@ -23,12 +25,12 @@ public class Libro {
         this.Imagen = Imagen;
     }
 
-    public String getAutor() {
-        return Autor;
+    public String getAutorId() {
+        return AutorId;
     }
 
-    public void setAutor(String Autor) {
-        this.Autor = Autor;
+    public void setAutorId(String Autor) {
+        this.AutorId = Autor;
     }
 
     public String getDescripcion() {

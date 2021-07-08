@@ -28,10 +28,16 @@ public class ControllerInicio extends HttpServlet {
         }
         
         request.setAttribute("msgError", "Error al Insertar");
+        
+        //request.getSession().setAttribute("TipoUsuario", "admin");
+        //request.getSession().setAttribute("TipoUsuario", "normal");
+        
+        
+        
         //#1
         response.sendRedirect("LibroIndex.jsp");
         //#2
-        //request.getRequestDispatcher("LibroIndex.jsp").forward(request, response);
+        request.getRequestDispatcher("LibroIndex.jsp").forward(request, response);
     }
 
 

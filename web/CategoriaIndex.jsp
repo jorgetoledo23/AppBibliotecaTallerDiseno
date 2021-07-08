@@ -13,7 +13,8 @@
         <link rel="stylesheet" href="css/mdb.min.css" />
     </head>
     <body>
-        
+        <%--<c:if test="${sessionScope.TipoUsuario == 'admin'}"> --%>
+            
         <jsp:include page="includes/menu.jsp"></jsp:include>
         
         <div class="container">
@@ -24,9 +25,7 @@
             </div>
             <hr>
             <div class="row">
-
                 <div class="col-lg-4">
-                    
                     <form action="ControllerCategoria" method="POST" enctype="multipart/form-data">
                         <div class="form-outline mb-4">
                             <input name="categoriaName" type="text" class="form-control" />
@@ -75,6 +74,7 @@
             </div>
             
         </div>
+        
     <!-- HOLA GITHUB -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     </body>

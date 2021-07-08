@@ -55,16 +55,27 @@ public class DAO {
         return listCategorias;
     }
     
-    public Categoria obtenerCategoriaPorId(int CatId) throws SQLException{
+    public List<Libro> obtenerLibros() throws SQLException{
         Sentencia = Con.createStatement();
-        Filas = Sentencia.executeQuery("SELECT CategoriaId, Nombre, Descripcion, Imagen FROM tblCategorias WHERE CategoriaId = "+CatId+"");
-        Categoria C = new Categoria();
+        Filas = Sentencia.executeQuery("SELECT L.LibroId, L.CategoriaId, C.Nombre as NombreCategoria FROM tblLibros L INNER JOIN tblCategorias C ON L.CategoriaId = C.CategoriaId");
+        List<Libro> ListaLibros = new ArrayList<>();
         while(Filas.next()){
+            Libro L = new Libro();
+            L.setCategoriaId(Filas.getInt("CategoriaId"));
+            L.setDescripcion(Filas.getString("Descripcion"));
+            L.setISBN(Filas.getString("Isbn"));
+            
+            Categoria C = new Categoria();
             C.setCategoriaId(Filas.getInt("CategoriaId"));
-            C.setDescripcion(Filas.getString("Descripcion"));
-            C.setNombre(Filas.getString("Nombre"));
-            C.setImagen(Filas.getString("Imagen"));
+            C.setNombre(Filas.getString("NombreCategoria"));
+            
+            Autor A = new Autor();
+            
+            
+            L.setCategoria(C);
+            
+            
         }
-        return C;
+        return ListaLibros;
     }
 }

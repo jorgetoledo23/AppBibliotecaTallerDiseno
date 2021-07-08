@@ -36,6 +36,8 @@ public class ControllerCategoria extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            
+            
         DAO D = new DAO();
         if(request.getParameter("opcion") == null){
             //Cargar Todas las Categorias
