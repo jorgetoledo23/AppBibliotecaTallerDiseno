@@ -69,8 +69,11 @@
                 
                 </c:forEach>
 
-                
-                
+               <select name="year">
+                    <c:forEach var="i" begin="1950" end="2099" step="1">
+                            <option value="${i}">${i}</option>
+                    </c:forEach>  
+                </select>
             </div>
             
         </div>

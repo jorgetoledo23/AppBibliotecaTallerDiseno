@@ -25,7 +25,7 @@
             <hr>
             
             <div class="row">
-                <form class="row" action="ControllerLibro" method="POST">
+                <form class="row" action="ControllerLibro" method="POST" enctype="multipart/form-data">
                 <div class="col-lg-6">
                         <div class="form-outline mb-4">
                             <input name="libroName" type="text" class="form-control" />
@@ -37,16 +37,16 @@
                             <label class="form-label" for="libroISBN">ISBN</label>
                         </div>
                             <div class="form-outline mb-4">
-                            <input name="libroISBN" type="text" class="form-control" />
-                            <label class="form-label" for="libroISBN">ISBN</label>
+                            <input name="libroAutor" type="text" class="form-control" />
+                            <label class="form-label" for="libroAutor">Autor</label>
                         </div>
                             <div class="form-outline mb-4">
-                            <input name="libroISBN" type="text" class="form-control" />
-                            <label class="form-label" for="libroISBN">ISBN</label>
+                            <input name="libroDescripcion" type="textarea" class="form-control" />
+                            <label class="form-label" for="libroDescripcion">Descripcion</label>
                         </div>
                         <div class="form-group">
-                            <label for="Categoria" class="control-label">Categoria</label>
-                            <select name="Categoria" class="form-control">
+                            <label for="CategoriaId" class="control-label">Categoria</label>
+                            <select name="CategoriaId" class="form-control">
                                 <c:forEach var="C" items="${applicationScope.ListadoCategorias}">
                                     <option value="${C.categoriaId}">${C.nombre}</option>
                                 </c:forEach>
@@ -54,37 +54,26 @@
                         </div>
                     
                 </div>
-                        <div class="col-lg-6">
+                    <div class="col-lg-6">
                     
 
-                        <div class="form-outline mb-4">
-                            <input name="libroName" type="text" class="form-control" />
-                            <label class="form-label" for="libroName">Nombre del Libro</label>
+                        <div class="form-outline col-md-6 mb-4">
+                            <input name="libroPrecio" type="number" class="form-control" />
+                            <label class="form-label" for="libroPrecio">Precio</label>
                         </div>
 
-                        <div class="form-outline mb-4">
-                            <input name="libroISBN" type="text" class="form-control" />
-                            <label class="form-label" for="libroISBN">ISBN</label>
+                        <div class="form-outline col-md-6 mb-4">
+                            <input name="libroStock" type="number" class="form-control" />
+                            <label class="form-label" for="libroStock">Stock</label>
                         </div>
-                            <div class="form-outline mb-4">
-                            <input name="libroISBN" type="text" class="form-control" />
-                            <label class="form-label" for="libroISBN">ISBN</label>
+                        <div class="mb-3">
+                            <label for="LibroImagen" class="form-label">Imagen</label>
+                            <input name="LibroImagen" class="form-control" type="file" id="CategoriaImagen">
                         </div>
-                            <div class="form-outline mb-4">
-                            <input name="libroISBN" type="text" class="form-control" />
-                            <label class="form-label" for="libroISBN">ISBN</label>
-                        </div>
-                            <div class="form-outline mb-4">
-                            <input name="libroISBN" type="text" class="form-control" />
-                            <label class="form-label" for="libroISBN">ISBN</label>
-                        </div>
-                        
-                        
-
-                </div>
+                    </div>
                     <p class="text-warning">${msgError}</p>
                         <input class="btn btn-outline-success btn-block" name="Accion" type="submit" value="Guardar Libro">
-                        </form>
+                </form>
             </div>
             <div class="row mt-5">
                 <table class="table table-hover text-center">
@@ -93,7 +82,12 @@
                             <th scope="col">#</th>
                             <th scope="col">Titulo</th>
                             <th scope="col">ISBN</th>
+                            <th scope="col">Imagen</th>
                             <th scope="col">Autor</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Categoria</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -104,7 +98,12 @@
                             <th>${Libro.libroId}</th>
                             <th>${Libro.titulo}</th>
                             <th>${Libro.isbn}</th>
+                            <th><img src="img/imgLibros/${Libro.imagen}" style="width: 50px; height: 50px;" class="card-img-top mx-auto" alt="..."></th>
                             <th>${Libro.autor}</th>
+                            <th>${Libro.descripcion}</th>
+                            <th>${Libro.precio}</th>
+                            <th>${Libro.stock}</th>
+                            <th>${Libro.categoria.nombre}</th>
                             <th>
                                 <a class="" href="#"><i class="fas fa-pen fa-lg red-text"></i></a>
                                 <a href="#"><i class="fas fa-info-circle fa-lg"></i></a>
@@ -112,41 +111,6 @@
                             </th>
                         </tr>
                     </c:forEach>
-                        
-                        <tr>
-                            <th>000-1234</th>
-                            <th>Harry Potter y La Piedra Filosofal</th>
-                            <th>9780439362139</th>
-                            <th>J.K. Rowling</th>
-                            <th>
-                                <a class="" href="#"><i class="fas fa-pen fa-lg red-text"></i></a>
-                                <a href="#"><i class="fas fa-info-circle fa-lg"></i></a>
-                                <a onclick="return confirm('Estas Seguro de Elimnar este Libro?')"
-                                    href="#"><i class="fas fa-trash fa-lg"></i></a>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>000-1234</th>
-                            <th>Harry Potter y La Piedra Filosofal</th>
-                            <th>9780439362139</th>
-                            <th>J.K. Rowling</th>
-                            <th>
-                                <a href="#"><i class="fas fa-pen fa-lg"></i></a>
-                                <a href="#"><i class="fas fa-info-circle fa-lg"></i></a>
-                                <a href="#"><i class="fas fa-trash fa-lg"></i></a>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>000-1234</th>
-                            <th>Harry Potter y La Piedra Filosofal</th>
-                            <th>9780439362139</th>
-                            <th>J.K. Rowling</th>
-                            <th>
-                                <a href="#"><i class="fas fa-pen fa-lg"></i></a>
-                                <a href="#"><i class="fas fa-info-circle fa-lg"></i></a>
-                                <a href="#"><i class="fas fa-trash fa-lg"></i></a>
-                            </th>
-                        </tr>
                     </tbody>
                     <tfoot>
                         

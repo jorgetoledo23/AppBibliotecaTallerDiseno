@@ -1,8 +1,13 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controller;
 
 import DataBaseConector.DAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,33 +17,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet(name = "ControllerInicio", urlPatterns = {"/ControllerInicio"})
-public class ControllerInicio extends HttpServlet {
+@WebServlet(name = "ControllerHome", urlPatterns = {"/ControllerHome"})
+public class ControllerHome extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String CategoriaId = request.getParameter("CategoriaId");
         DAO D = new DAO();
         try {
-            getServletContext().setAttribute("ListadoCategorias", D.obtenerCategorias());
-            getServletContext().setAttribute("ListadoLibros", D.obtenerLibros());
+            request.setAttribute("LibrosByCat", D.obtenerLibrosByCat(CategoriaId));
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
-        //request.setAttribute("msgError", "Error al Insertar");
-        
-        //request.getSession().setAttribute("TipoUsuario", "admin");
-        //request.getSession().setAttribute("TipoUsuario", "normal");
-        
-        
-        
-        //#1
-        response.sendRedirect("index.jsp");
-        //#2
-        //request.getRequestDispatcher("LibroIndex.jsp").forward(request, response);
+        request.getRequestDispatcher("indexLibros.jsp").forward(request, response);
     }
 
 
@@ -46,6 +40,8 @@ public class ControllerInicio extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        
+
     }
 
 

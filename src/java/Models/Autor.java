@@ -9,7 +9,7 @@ package Models;
  *
  * @author Profe
  */
-class Autor {
+public class Autor {
     
     private int AutorId;
     private String Nombre;

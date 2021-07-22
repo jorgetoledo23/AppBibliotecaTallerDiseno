@@ -132,6 +132,10 @@ public class ControllerCategoria extends HttpServlet {
         OutputStream out = null;
         InputStream filecontent = null;
         //Configuracion del nombre del archivo
+
+        
+      
+        
         String format = "";
         DateFormat hourdateFormat = new SimpleDateFormat("HHmmssddMMyyyy");//img/x12073017062021.jgp
         String fecha = hourdateFormat.format(new Date());

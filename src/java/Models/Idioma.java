@@ -9,6 +9,6 @@ package Models;
  *
  * @author Profe
  */
-class Idioma {
+public class Idioma {
     
 }
